@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cebimdeki Market - Birebir Görsel Kopyası</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <a href="/">
+                    <img src="../static/images/logo.png" alt="Cebimdeki Market" class="site-logo">
+                </a>
+            </div>
+            <div class="search-and-filters">
+            <form action="/" method="GET" class="search-bar">
+                <input type="text" name="q" placeholder="Ürün, marka veya kategori ara...">
+                <button type="submit" style="background:none; border:none; cursor:pointer;">
+                    <span class="search-icon">🔍</span>
+                </button>
+            </form>
+                <div class="market-filters">
+                    <button class="market-badge bim-badge" onclick="filtrele('BİM')">BİM</button>
+                    <button class="market-badge a101-badge" onclick="filtrele('A101')">A101</button>
+                    <button class="market-badge sok-badge" onclick="filtrele('ŞOK')">ŞOK</button>
+                    <a href="/" class="market-badge all-badge">Tümü</a>
+                </div>
+            </div>
+            <div class="header-right-side"></div>
+            <button class="cart-trigger-btn" onclick="toggleCart()">🛒 Sepetim</button>
+        </div>
+    </header>
+
+    <div class="main-body-container">
+        <nav class="sidebar-categories">
+            <h3>Kategoriler <span class="category-arrow"></span></h3>
+            <ul>
+                <li onclick="kategoriFiltrele('hepsi')">🏠 Tüm Ürünler</li>
+                <li onclick="kategoriFiltrele('meyve-sebze')">🍏 Meyve & Sebze</li>
+                <li onclick="kategoriFiltrele('sut-urunleri')">🥛 Süt Ürünleri</li>
+                <li onclick="kategoriFiltrele('firin')">🥖 Fırın</li>
+                <li onclick="kategoriFiltrele('et-tavuk')">🍗 Et & Tavuk</li>
+                <li onclick="kategoriFiltrele('atistirmalik')">🍫 Atıştırmalık</li>
+                <li onclick="kategoriFiltrele('temel-gida')">🍚 Temel Gıda</li>
+                <li onclick="kategoriFiltrele('icecek')">🥤 İçecekler</li>
+                <li onclick="kategoriFiltrele('temizlik')">🧼 Temizlik</li>
+                <li onclick="kategoriFiltrele('kisisel-bakim')">🪥 Kişisel Bakım</li>
+            </ul>
+        </nav>
+
+        <main class="product-grid-main">
+            {% for urun in urunler %}
+            {# ÜRÜN VARSA BU KARTLAR ÇIKAR #}
+            <div class="product-card-unit" data-kategori="{{ urun.kategori }}">
+                <img src="{{ urun.resim }}" alt="{{ urun.isim }}" class="product-img">
+                <p class="product-name">{{ urun.isim }}</p>
+        
+                <div class="store-pricing-grid">
+                    <div class="store-col" onclick="marketSec(this, 'BİM')">
+                        <span class="store-label bim-l">BİM</span>
+                        <span class="store-price">{{ urun.fiyatlar.bim }} TL</span>
+                    </div>
+                    <div class="store-col" onclick="marketSec(this, 'A101')">
+                        <span class="store-label a101-l">A101</span>
+                        <span class="store-price">{{ urun.fiyatlar.a101 }} TL</span>
+                    </div>
+                    <div class="store-col" onclick="marketSec(this, 'ŞOK')">
+                        <span class="store-label sok-l">ŞOK</span>
+                        <span class="store-price">{{ urun.fiyatlar.sok }} TL</span>
+                    </div>
+                </div>
+        
+            <button class="add-to-cart-btn" 
+                onclick="sepeteEkle(this, '{{ urun.isim }}', '{{ urun.resim }}', '{{ urun.fiyatlar.bim }}', '{{ urun.fiyatlar.a101 }}', '{{ urun.fiyatlar.sok }}')">
+                Sepete Ekle
+            </button>
+            </div>
+            {% else %}
+                {# ÜRÜN YOKSA BU MESAJ ÇIKAR #}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 100px 20px; background: white; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                    <div style="font-size: 80px; margin-bottom: 20px;">🕵️‍♂️</div>
+                    <h2 style="color: #333; font-size: 26px;">Üzgünüz, Aradığınız Ürün Bulunamadı</h2>
+                    <p style="color: #666; margin: 15px 0; font-size: 1.1rem;">
+                        "<b>{{ query }}</b>" kelimesiyle eşleşen bir ürünümüz yok.
+                    </p>
+                    <p style="color: #999;">Lütfen yazımı kontrol edin veya başka bir ürün arayın.</p>
+                    <a href="/" style="display: inline-block; margin-top: 25px; padding: 12px 30px; background-color: #3e8e41; color: white; text-decoration: none; border-radius: 50px; font-weight: bold;">✨ Keşfetmeye Devam Et</a>
+                </div>
+            {% endfor %}
+        </main>
+
+        <aside class="right-cart-panel" id="sepet-modal">
+            <div class="cart-title-row">
+                <span>Sepetim</span>
+                <span class="cart-close-btn">✕</span>
+            </div>
+    
+            <div class="cart-item-list">
+                <!-- Sepet elemanları buraya gelecek -->
+            </div>
+
+            <div class="cart-total-footer">
+                <div class="total-row-cart">
+                    <span>Toplam:</span>
+                    <span>0.00 TL</span>
+                </div>
+                <button class="compare-products-btn" onclick="karsilastirmayiBaslat()">Ürünleri Karşılaştır 📊</button>
+            </div>
+        </aside>
+    </div>
+
+<script src="../static/script.js"></script>
+</body>
+</html>
