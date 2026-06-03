@@ -8,8 +8,6 @@
 
 **Cebimdeki Market**, BİM, A101 ve ŞOK indirim marketlerindeki ürün fiyatlarını merkezi bir yapıda birleştirerek tüketicilerin en uygun fiyatlı sepet optimizasyonunu yapmasını sağlayan dinamik bir Flask tabanlı web uygulamasıdır. 
 
-> *Bu proje, Alanya Üniversitesi - BPR 216 Bilgisayar Programlama Yazılım Geliştirme Dersi kapsamında **Efe Yılmaz** (Öğrenci No: 240053023) tarafından geliştirilmiştir.*
-
 ---
 
 ## I. Öne Çıkan Teknik Özellikler ve Kod Mimarisi
