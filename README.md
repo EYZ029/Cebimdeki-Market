@@ -68,16 +68,16 @@ Projenin temel MVP mimarisi kararlı çalışmaktadır. Bir sonraki aşamada şu
 
 Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları sırasıyla uygulayınız:
 
-**1 Bağımlılıkları yükleyin:**
+**1. Bağımlılıkları yükleyin:**
 
 ```bash
 pip install flask
 ```
 
-**2 Uygulamayı başlatın:**
+**2. Uygulamayı başlatın:**
 
 ```bash
 python app.py
 ```
 
-**3 Tarayıcınızdan http://127.0.0.1:5000 adresine giderek platformu test edebilirsiniz.**
+**3. Tarayıcınızdan http://127.0.0.1:5000 adresine giderek platformu test edebilirsiniz.**
