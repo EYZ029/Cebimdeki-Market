@@ -51,6 +51,7 @@ cebimdeki_market/
 │
 └── templates/                  # HTML Arayüz Şablonları (Jinja2)
     └── index.html              # Anasayfa, Arama Kutusu, Dinamik Ürün Kartları ve Sağ Sepet Paneli
+```
 
 ---
 
@@ -67,16 +68,16 @@ Projenin temel MVP mimarisi kararlı çalışmaktadır. Bir sonraki aşamada şu
 
 Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları sırasıyla uygulayınız:
 
-**Bağımlılıkları yükleyin:**
+**1 Bağımlılıkları yükleyin:**
 
 ```bash
 pip install flask
+```
 
-**Uygulamayı başlatın:**
+**2 Uygulamayı başlatın:**
 
 ```bash
 python app.py
+```
 
-Tarayıcınızdan http://127.0.0.1:5000 adresine giderek platformu test edebilirsiniz.
-
----
+**3 Tarayıcınızdan http://127.0.0.1:5000 adresine giderek platformu test edebilirsiniz.**
